@@ -1,0 +1,40 @@
+<!doctype html>
+<meta charset="utf-8">
+<head>
+    <link type="text/css" rel="stylesheet" href="/static/css/main.css"/>
+    <title>ADM-CASH</title>
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <h2 class="active">Registrate con nosotros</h2>
+        <div class="fadeIn first">
+            <img src="/static/img/usuario.png"  id="icon" alt="User Icon">
+            {% with messages = get_flashed_messages()  %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              {{ message }}
+             
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+        <form action="{{url_for('CrearUsuario')}}" method="POST">
+                <input type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre completo" required>
+                <input type="email" id="email" class="fadeIn second" name="email" placeholder="Correo electronico" required>
+                <input type="password" id="passwd" class="fadeIn third" name="passwd" placeholder="Contraseña" required><br />
+                <input type="radio" name="genero" id="genero1" value="Femenino" required> Femenino
+                <input type="radio" name="genero" id="genero2" value="Masculino"> Masculino
+                <input type="radio" name="genero" id="genero2"value="Otro"> No binario
+                <input type="submit" class="fadeIn fourth" value="Registar"><br />
+        </form>
+        
+        <div id="formFooter">
+                <a class="underlineHover" href="/">Tiene una cuenta?</a>
+        </div>
+     </div>
+    </div>
+</body>
+</html>
