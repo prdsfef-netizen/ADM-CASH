@@ -1,0 +1,62 @@
+<!doctype html>
+<meta charset="utf-8">
+<head>
+    <link type="text/css" rel="stylesheet" href="/static/css/stylesheet.css"/>
+    <title>ADM-CASH</title>
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+            <div class="row">
+                    <div class="col-md-5">
+                        <img src="/./static/img/money-PNG-e1532606569895-300x269.png" id="icon" alt="User Icon">
+                        <p>Bienvenido, {{ username }}!</p>
+                        
+                      <form action="{{url_for('gastoForm')}}">
+                          <input type="submit" class="fadeIn fourth" value="Agregar Gasto"><br />
+                        </form>
+                        {% with messages = get_flashed_messages()  %}
+                      {% if messages %}
+                      {% for message in messages %}
+                      <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        
+                      </div>
+                      
+                      {% endfor %}
+                      {% endif %}
+                      {% endwith %}
+                    </div>
+                    <div class="col-md-7">
+                      <table class="table table-striped table-hover table-bordered table-sm bg-white">
+                        <thead>
+                          <tr>
+                            <!--<td>ID</td>-->
+                            <td>Gastos</td>
+                            <td>Producto</td>
+                            <td>Costo</td>
+                            <td>Categoria</td>
+                            <td>Operación</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for gasto in gastos %}
+                          <tr>
+                            <td>{{gasto.0}}</td>
+                            <td>{{gasto.1}}</td>
+                            <td>{{gasto.2}}</td>
+                            <td>{{gasto.3}}</td>
+                            <td>
+                              <a href="/edit/{{gasto.0}}" class="btn btn-secondary">editar</a>
+                              <a href="/delete/{{gasto.0}}" class="btn btn-danger btn-delete">borrar</a>
+                            </td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                     
+                    </div>
+                  </div>
+                </div>
+    </div>
+</body>
+</html>

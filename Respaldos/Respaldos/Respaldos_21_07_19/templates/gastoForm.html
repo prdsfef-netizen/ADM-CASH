@@ -1,0 +1,42 @@
+<!doctype html>
+<meta charset="utf-8">
+<head>
+    <link type="text/css" rel="stylesheet" href="/static/css/stylesheet.css"/>
+    <title>ADM-CASH</title>
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <h2 class="active">Gastos</h2>
+        <div class="fadeIn first">
+            <img src="/static/img/screencapture-localhost-8080-2019-08-22-20_29_28.png"  id="icon" alt="User Icon">
+            {% with messages = get_flashed_messages()  %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              {{ message }}
+             
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+        <div class="card card-body">
+                <form action="{{url_for('add_gasto')}}" method="POST">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="producto" placeholder="Nombre de producto" required>
+                    <input type="text" class="form-control" name="costo" placeholder="Costo" required><br />
+                    <input type="radio" name="categoria" id="categoria1" value="Ocio" required> Ocio<br />
+                    <input type="radio" name="categoria" id="categoria2" value="Canasta basica" required> Canasta basica<br />
+                    <input type="radio" name="categoria" id="categoria3" value="Electronico" required> Electronico<br />
+                    <input type="radio" name="categoria" id="categoria4" value="Personal" required> Personal<br />
+                  <input type="submit" class="fadeIn fourth" value="gasto"><br />
+                </form>
+              </div>
+              <div id="formFooter">
+                    <a class="underlineHover" href="/gastos">Ver gastos</a>
+            </div>
+     </div>
+    </div>
+</body>
+</html>
